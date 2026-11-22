@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="136" viewBox="0 0 840 136" shape-rendering="crispEdges" role="img" aria-label="Pixel Contribution Ridge">
+  <defs>
+    <pattern id="s_l_m_d25" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="4" height="4" fill="#d0d7de"/>
+    </pattern>
+    <pattern id="s_l_m_d50" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="4" height="4" fill="#656d76"/>
+      <rect x="4" y="4" width="4" height="4" fill="#656d76"/>
+    </pattern>
+    <pattern id="s_l_m_d75" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#1f2328"/>
+      <rect x="4" y="4" width="4" height="4" fill="#ffffff"/>
+    </pattern>
+  </defs>
+
+  <style>
+    .beacon-a { animation: beacon 2.4s steps(1) infinite; }
+    .beacon-b { animation: beacon 3.1s steps(1) 0.8s infinite; }
+    .beacon-c { animation: beacon 2.8s steps(1) 1.5s infinite; }
+    .ridge-cloud-a { animation: ridgeCloudA 24s steps(24) infinite; }
+    .ridge-cloud-b { animation: ridgeCloudB 18s steps(18) infinite; }
+    @keyframes beacon { 0%, 58% { opacity: 1; } 59%, 100% { opacity: 0.15; } }
+    @keyframes ridgeCloudA { 0%, 100% { transform: translateX(0px); } 50% { transform: translateX(48px); } }
+    @keyframes ridgeCloudB { 0%, 100% { transform: translateX(0px); } 50% { transform: translateX(-40px); } }
+  </style>
+
+  <!-- Header -->
+  <path d="M22 12h4v2h-4zM20 14h2v2h-2zM20 16h2v2h-2zM20 18h2v2h-2zM22 20h4v2h-4zM28 12h2v2h-2zM28 14h2v2h-2zM28 16h2v2h-2zM28 18h2v2h-2zM28 20h6v2h-6zM38 12h2v2h-2zM36 14h2v2h-2zM40 14h2v2h-2zM36 16h2v2h-2zM40 16h2v2h-2zM36 18h2v2h-2zM40 18h2v2h-2zM38 20h2v2h-2zM44 12h2v2h-2zM48 12h2v2h-2zM44 14h2v2h-2zM48 14h2v2h-2zM44 16h2v2h-2zM48 16h2v2h-2zM44 18h2v2h-2zM48 18h2v2h-2zM44 20h6v2h-6zM52 12h4v2h-4zM52 14h2v2h-2zM56 14h2v2h-2zM52 16h2v2h-2zM56 16h2v2h-2zM52 18h2v2h-2zM56 18h2v2h-2zM52 20h4v2h-4zM68 12h4v2h-4zM68 14h2v2h-2zM72 14h2v2h-2zM68 16h4v2h-4zM68 18h2v2h-2zM72 18h2v2h-2zM68 20h2v2h-2zM72 20h2v2h-2zM76 12h6v2h-6zM78 14h2v2h-2zM78 16h2v2h-2zM78 18h2v2h-2zM76 20h6v2h-6zM84 12h4v2h-4zM84 14h2v2h-2zM88 14h2v2h-2zM84 16h2v2h-2zM88 16h2v2h-2zM84 18h2v2h-2zM88 18h2v2h-2zM84 20h4v2h-4zM94 12h4v2h-4zM92 14h2v2h-2zM92 16h2v2h-2zM96 16h2v2h-2zM92 18h2v2h-2zM96 18h2v2h-2zM94 20h4v2h-4zM100 12h6v2h-6zM100 14h2v2h-2zM100 16h4v2h-4zM100 18h2v2h-2zM100 20h6v2h-6zM120 12h2v2h-2zM120 14h2v2h-2zM118 16h2v2h-2zM116 18h2v2h-2zM116 20h2v2h-2zM128 12h2v2h-2zM128 14h2v2h-2zM126 16h2v2h-2zM124 18h2v2h-2zM124 20h2v2h-2zM140 12h6v2h-6zM140 14h2v2h-2zM140 16h4v2h-4zM144 18h2v2h-2zM140 20h4v2h-4zM148 12h6v2h-6zM148 14h2v2h-2zM152 14h2v2h-2zM148 16h2v2h-2zM152 16h2v2h-2zM148 18h2v2h-2zM152 18h2v2h-2zM148 20h6v2h-6zM156 12h2v2h-2zM160 12h2v2h-2zM156 14h2v2h-2zM160 14h2v2h-2zM156 16h6v2h-6zM156 18h6v2h-6zM156 20h2v2h-2zM160 20h2v2h-2z" fill="#656d76"/>
+  <path d="M734 12h6v2h-6zM734 14h2v2h-2zM734 16h4v2h-4zM738 18h2v2h-2zM734 20h4v2h-4zM742 12h6v2h-6zM742 14h2v2h-2zM746 14h2v2h-2zM742 16h2v2h-2zM746 16h2v2h-2zM742 18h2v2h-2zM746 18h2v2h-2zM742 20h6v2h-6zM752 12h2v2h-2zM750 14h4v2h-4zM752 16h2v2h-2zM752 18h2v2h-2zM750 20h6v2h-6zM768 12h4v2h-4zM766 14h2v2h-2zM766 16h2v2h-2zM766 18h2v2h-2zM768 20h4v2h-4zM776 12h2v2h-2zM774 14h2v2h-2zM778 14h2v2h-2zM774 16h2v2h-2zM778 16h2v2h-2zM774 18h2v2h-2zM778 18h2v2h-2zM776 20h2v2h-2zM782 12h2v2h-2zM786 12h2v2h-2zM782 14h6v2h-6zM782 16h6v2h-6zM782 18h2v2h-2zM786 18h2v2h-2zM782 20h2v2h-2zM786 20h2v2h-2zM790 12h2v2h-2zM794 12h2v2h-2zM790 14h6v2h-6zM790 16h6v2h-6zM790 18h2v2h-2zM794 18h2v2h-2zM790 20h2v2h-2zM794 20h2v2h-2zM798 12h6v2h-6zM800 14h2v2h-2zM800 16h2v2h-2zM800 18h2v2h-2zM798 20h6v2h-6zM806 12h6v2h-6zM808 14h2v2h-2zM808 16h2v2h-2zM808 18h2v2h-2zM808 20h2v2h-2zM816 12h4v2h-4zM814 14h2v2h-2zM816 16h2v2h-2zM818 18h2v2h-2zM814 20h4v2h-4z" fill="#1f2328"/>
+  <rect x="20" y="32" width="800" height="4" fill="url(#s_l_m_d25)"/>
+
+  <!-- Quiet Drifting Clouds above Peaks -->
+  
+    <g class="ridge-cloud-a" opacity="0.55">
+      <path d="M104 40h16v4h-16zM100 44h24v4h-24zM96 48h32v4h-32z" fill="#d0d7de"/>
+    </g>
+    <g class="ridge-cloud-b" opacity="0.45">
+      <path d="M576 44h12v4h-12zM572 48h20v4h-20z" fill="#d0d7de"/>
+    </g>
+  
+
+  <!-- Skyline / Mountain Columns -->
+  <rect x="24" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="40" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="56" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="72" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="88" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="104" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="120" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="136" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="152" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="168" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="184" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="200" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="216" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="232" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="248" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="264" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="280" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="296" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="312" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="328" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="344" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="360" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="376" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="392" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="408" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="424" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="440" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="456" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="472" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="488" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="504" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="520" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="536" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="552" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="568" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="584" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="596" y="80" width="12" height="28" fill="url(#s_l_m_d75)"/>
+  <rect x="596" y="76" width="12" height="4" fill="#1f2328"/>
+  <rect x="612" y="48" width="12" height="60" fill="#1f2328"/>
+  <rect x="612" y="44" width="12" height="4" fill="#1f2328"/>
+  <rect x="628" y="72" width="12" height="36" fill="url(#s_l_m_d75)"/>
+  <rect x="628" y="68" width="12" height="4" fill="#1f2328"/>
+  <rect x="644" y="104" width="12" height="4" fill="url(#s_l_m_d25)"/>
+  <rect x="644" y="100" width="12" height="4" fill="#1f2328"/>
+  <rect x="660" y="92" width="12" height="16" fill="url(#s_l_m_d50)"/>
+  <rect x="660" y="88" width="12" height="4" fill="#1f2328"/>
+  <rect x="676" y="104" width="12" height="4" fill="url(#s_l_m_d25)"/>
+  <rect x="676" y="100" width="12" height="4" fill="#1f2328"/>
+  <rect x="696" y="104" width="8" height="4" fill="#d0d7de"/>
+  <rect x="708" y="104" width="12" height="4" fill="url(#s_l_m_d25)"/>
+  <rect x="708" y="100" width="12" height="4" fill="#1f2328"/>
+  <rect x="724" y="104" width="12" height="4" fill="url(#s_l_m_d25)"/>
+  <rect x="724" y="100" width="12" height="4" fill="#1f2328"/>
+  <rect x="740" y="64" width="12" height="44" fill="#1f2328"/>
+  <rect x="740" y="60" width="12" height="4" fill="#1f2328"/>
+  <rect x="756" y="80" width="12" height="28" fill="url(#s_l_m_d75)"/>
+  <rect x="756" y="76" width="12" height="4" fill="#1f2328"/>
+  <rect x="772" y="96" width="12" height="12" fill="url(#s_l_m_d50)"/>
+  <rect x="772" y="92" width="12" height="4" fill="#1f2328"/>
+  <rect x="788" y="96" width="12" height="12" fill="url(#s_l_m_d50)"/>
+  <rect x="788" y="92" width="12" height="4" fill="#1f2328"/>
+  <rect x="804" y="104" width="12" height="4" fill="url(#s_l_m_d25)"/>
+  <rect x="804" y="100" width="12" height="4" fill="#1f2328"/>
+  <g class="beacon-b"><rect x="616" y="36" width="4" height="4" fill="#1f2328"/></g>
+
+  <!-- Crisp Baseline -->
+  <rect x="20" y="108" width="800" height="4" fill="#d0d7de"/>
+
+  <!-- Axis Ticks -->
+  <path d="M20 120h6v2h-6zM20 122h2v2h-2zM20 124h4v2h-4zM24 126h2v2h-2zM20 128h4v2h-4zM28 120h6v2h-6zM28 122h2v2h-2zM32 122h2v2h-2zM28 124h2v2h-2zM32 124h2v2h-2zM28 126h2v2h-2zM32 126h2v2h-2zM28 128h6v2h-6zM36 120h2v2h-2zM40 120h2v2h-2zM36 122h2v2h-2zM40 122h2v2h-2zM36 124h6v2h-6zM36 126h6v2h-6zM36 128h2v2h-2zM40 128h2v2h-2zM54 120h2v2h-2zM52 122h2v2h-2zM56 122h2v2h-2zM52 124h6v2h-6zM52 126h2v2h-2zM56 126h2v2h-2zM52 128h2v2h-2zM56 128h2v2h-2zM62 120h4v2h-4zM60 122h2v2h-2zM60 124h2v2h-2zM64 124h2v2h-2zM60 126h2v2h-2zM64 126h2v2h-2zM62 128h4v2h-4zM70 120h2v2h-2zM68 122h2v2h-2zM72 122h2v2h-2zM68 124h2v2h-2zM72 124h2v2h-2zM68 126h2v2h-2zM72 126h2v2h-2zM70 128h2v2h-2z" fill="#656d76"/>
+<path d="M384 120h4v2h-4zM388 122h2v2h-2zM386 124h2v2h-2zM384 126h2v2h-2zM384 128h6v2h-6zM392 120h6v2h-6zM392 122h2v2h-2zM392 124h4v2h-4zM396 126h2v2h-2zM392 128h4v2h-4zM400 120h2v2h-2zM404 120h2v2h-2zM400 122h2v2h-2zM404 122h2v2h-2zM400 124h6v2h-6zM400 126h6v2h-6zM400 128h2v2h-2zM404 128h2v2h-2zM418 120h2v2h-2zM416 122h2v2h-2zM420 122h2v2h-2zM416 124h6v2h-6zM416 126h2v2h-2zM420 126h2v2h-2zM416 128h2v2h-2zM420 128h2v2h-2zM426 120h4v2h-4zM424 122h2v2h-2zM424 124h2v2h-2zM428 124h2v2h-2zM424 126h2v2h-2zM428 126h2v2h-2zM426 128h4v2h-4zM434 120h2v2h-2zM432 122h2v2h-2zM436 122h2v2h-2zM432 124h2v2h-2zM436 124h2v2h-2zM432 126h2v2h-2zM436 126h2v2h-2zM434 128h2v2h-2z" fill="#656d76"/>
+<path d="M798 120h4v2h-4zM798 122h2v2h-2zM802 122h2v2h-2zM798 124h2v2h-2zM802 124h2v2h-2zM798 126h2v2h-2zM802 126h2v2h-2zM798 128h2v2h-2zM802 128h2v2h-2zM808 120h2v2h-2zM806 122h2v2h-2zM810 122h2v2h-2zM806 124h2v2h-2zM810 124h2v2h-2zM806 126h2v2h-2zM810 126h2v2h-2zM808 128h2v2h-2zM814 120h2v2h-2zM818 120h2v2h-2zM814 122h2v2h-2zM818 122h2v2h-2zM814 124h6v2h-6zM814 126h6v2h-6zM814 128h2v2h-2zM818 128h2v2h-2z" fill="#656d76"/>
+</svg>

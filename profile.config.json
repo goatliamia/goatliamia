@@ -1,0 +1,22 @@
+{
+  "username": "goatliamia",
+  "displayName": "GOATLIAMIA",
+  "tagline": "AGENT TOOLS // ABOVE THE CLOUDS",
+  "timezoneOffset": 8,
+  "accent": "mono",
+  "focus": "BUILDING",
+  "bio": "Building agent tools, trace visualizers, and quiet minimal interfaces — somewhere above the clouds.",
+  "now": "Working on trajectory-tree — agent traces, eval metrics & evidence-linked reports.",
+  "projects": [
+    {
+      "name": "trajectory-tree",
+      "url": "https://github.com/goatliamia/trajectory-tree",
+      "tag": "JS / AGENT EVAL",
+      "desc": "Visualize agent traces, explore Eval metrics and evidence-linked reports for DSH, Pi, Codex and Claude Code, plus an Antigravity context sidebar."
+    }
+  ],
+  "links": [
+    { "label": "github", "url": "https://github.com/goatliamia" },
+    { "label": "trajectory-tree", "url": "https://github.com/goatliamia/trajectory-tree" }
+  ]
+}

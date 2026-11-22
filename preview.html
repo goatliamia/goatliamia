@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Profile README — 1-bit Pixel Micro-Ecosystem Demo</title>
+    <style>
+      :root {
+        --bg: #010409;
+        --canvas: #0d1117;
+        --subtle: #161b22;
+        --border: #30363d;
+        --text: #e6edf3;
+        --muted: #7d8590;
+        --code-bg: rgba(110, 118, 129, 0.25);
+        --link: #58a6ff;
+        --pill-active-bg: #e6edf3;
+        --pill-active-fg: #0d1117;
+      }
+
+      [data-theme='light'] {
+        --bg: #f6f8fa;
+        --canvas: #ffffff;
+        --subtle: #f6f8fa;
+        --border: #d0d7de;
+        --text: #1f2328;
+        --muted: #656d76;
+        --code-bg: rgba(175, 184, 193, 0.2);
+        --link: #0969da;
+        --pill-active-bg: #1f2328;
+        --pill-active-fg: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        transition: background 0.18s ease, color 0.18s ease;
+      }
+
+      .studio-bar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--subtle);
+        border-bottom: 1px solid var(--border);
+        padding: 12px 20px;
+      }
+
+      .studio-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .control-group {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .control-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        margin-right: 4px;
+      }
+
+      .seg {
+        display: inline-flex;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        overflow: hidden;
+        background: var(--canvas);
+      }
+
+      .seg button {
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        padding: 5px 10px;
+        font-size: 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        cursor: pointer;
+        border-right: 1px solid var(--border);
+      }
+
+      .seg button:last-child {
+        border-right: 0;
+      }
+
+      .seg button.active {
+        background: var(--pill-active-bg);
+        color: var(--pill-active-fg);
+        font-weight: 600;
+      }
+
+      .text-input {
+        background: var(--canvas);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 5px 9px;
+        font-size: 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        width: 132px;
+      }
+
+      .gh-shell {
+        max-width: 936px;
+        margin: 28px auto 56px;
+        padding: 0 20px;
+      }
+
+      .gh-card {
+        background: var(--canvas);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .gh-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .gh-card-header strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .readme-body {
+        padding: 28px 32px 36px;
+        line-height: 1.6;
+        font-size: 15px;
+      }
+
+      .svg-stage {
+        display: flex;
+        justify-content: center;
+      }
+
+      .svg-stage img {
+        width: 100%;
+        max-width: 840px;
+        height: auto;
+        image-rendering: pixelated;
+        display: block;
+      }
+
+      blockquote {
+        margin: 24px 0 18px;
+        padding: 0 1em;
+        color: var(--muted);
+        border-left: 0.25em solid var(--border);
+      }
+
+      pre {
+        margin: 0 0 24px;
+        padding: 14px 16px;
+        background: var(--subtle);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 13px;
+        line-height: 1.65;
+        overflow-x: auto;
+      }
+
+      h3 {
+        margin: 24px 0 12px;
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 28px;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        padding: 9px 13px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+
+      th {
+        background: var(--subtle);
+        font-weight: 600;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 85%;
+        background: var(--code-bg);
+        padding: 0.18em 0.42em;
+        border-radius: 4px;
+      }
+
+      .readme-footer {
+        margin-top: 24px;
+        text-align: center;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .readme-footer a {
+        color: var(--link);
+        text-decoration: none;
+      }
+
+      .readme-footer a:hover {
+        text-decoration: underline;
+      }
+
+      .note-strip {
+        margin-top: 14px;
+        text-align: center;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="studio-bar">
+      <div class="studio-inner">
+        <div class="control-group">
+          <span class="control-label">GitHub</span>
+          <div class="seg" data-control="theme">
+            <button data-value="dark" class="active">Dark</button>
+            <button data-value="light">Light</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Time</span>
+          <div class="seg" data-control="timeOfDay">
+            <button data-value="night" class="active">Night</button>
+            <button data-value="day">Day</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Activity</span>
+          <div class="seg" data-control="activityState">
+            <button data-value="active" class="active">Active</button>
+            <button data-value="idle">Idle</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Accent</span>
+          <div class="seg" data-control="accent">
+            <button data-value="emerald">Green</button>
+            <button data-value="amber">Amber</button>
+            <button data-value="cyan">Cyan</button>
+            <button data-value="mono" class="active">1-bit</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Name</span>
+          <input id="nameInput" class="text-input" type="text" maxlength="13" value="GOATLIAMIA" />
+        </div>
+      </div>
+    </header>
+
+    <main class="gh-shell">
+      <section class="gh-card">
+        <div class="gh-card-header">
+          <span><strong id="repoHandle">pixel-dev</strong> / README.md</span>
+          <span>1-bit micro-ecosystem · pure SVG + CSS steps()</span>
+        </div>
+
+        <article class="readme-body">
+          <div class="svg-stage">
+            <img id="heroImg" alt="1-bit Pixel Micro-Ecosystem Profile" />
+          </div>
+
+          <blockquote id="bioText"></blockquote>
+
+          <pre id="nowBlock"></pre>
+
+          <h3>Selected Works</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Stack</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody id="projectsBody"></tbody>
+          </table>
+
+          <div class="svg-stage">
+            <img id="skylineImg" alt="Pixel Contribution Ridge" />
+          </div>
+
+          <div class="readme-footer">
+            <div id="linksRow"></div>
+            <div style="margin-top: 6px; font-size: 12px">
+              1-bit micro-ecosystem auto-updates every 4h via GitHub Actions
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <p class="note-strip">
+        Preview renders SVGs inside &lt;img&gt; tags — identical to how GitHub Profile README executes SVG CSS animations.
+      </p>
+    </main>
+
+    <script src="./assets/preview-builder.js"></script>
+    <script>
+      (function () {
+        const api = window.PIXEL_PROFILE;
+        const cfg = api.DEFAULT_CONFIG;
+        const stats = api.DEFAULT_STATS;
+
+        const state = {
+          theme: 'dark',
+          timeOfDay: 'night',
+          activityState: 'active',
+          accent: cfg.accent || 'emerald',
+          displayName: cfg.displayName || 'PIXEL.DEV',
+        };
+
+        document.getElementById('nameInput').value = state.displayName;
+        document.getElementById('repoHandle').textContent = cfg.username || 'pixel-dev';
+        document.getElementById('bioText').textContent = cfg.bio || '';
+        document.getElementById('nowBlock').textContent =
+          `NOW      ▸ ${cfg.now}\n` +
+          `FOCUS    ▸ TypeScript · Creative Coding · Minimal UI · Developer Tools`;
+
+        document.getElementById('projectsBody').innerHTML = (cfg.projects || [])
+          .map(
+            (p) =>
+              `<tr><td><code><strong>${p.name}</strong></code></td><td><code>${p.tag}</code></td><td>${p.desc}</td></tr>`
+          )
+          .join('');
+
+        document.getElementById('linksRow').innerHTML = (cfg.links || [])
+          .map((l) => `<code><a href="${l.url}" target="_blank" rel="noreferrer">${l.label}</a></code>`)
+          .join(' · ');
+
+        function toSvgDataUri(svg) {
+          return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+        }
+
+        function render() {
+          document.documentElement.setAttribute('data-theme', state.theme);
+
+          const heroSvg = api.buildHeroSvg({
+            theme: state.theme,
+            accent: state.accent,
+            timeOfDay: state.timeOfDay,
+            activityState: state.activityState,
+            plantStage: state.activityState === 'active' ? 'bloom' : 'dormant',
+            displayName: state.displayName,
+            tagline: cfg.tagline,
+            streakDays: state.activityState === 'active' ? stats.streakDays : 0,
+            recentCommits: state.activityState === 'active' ? stats.recentCommits30d : 2,
+            focus: cfg.focus || 'BUILDING',
+            localTimeStr: state.timeOfDay === 'night' ? '22:40' : '14:20',
+          });
+
+          const skylineSvg = api.buildSkylineSvg({
+            theme: state.theme,
+            accent: state.accent,
+            weeks: stats.weeks,
+            totalCommits: stats.totalCommits,
+          });
+
+          document.getElementById('heroImg').src = toSvgDataUri(heroSvg);
+          document.getElementById('skylineImg').src = toSvgDataUri(skylineSvg);
+        }
+
+        document.querySelectorAll('.seg').forEach((group) => {
+          const key = group.dataset.control;
+          group.querySelectorAll('button').forEach((btn) => {
+            btn.addEventListener('click', () => {
+              state[key] = btn.dataset.value;
+              group.querySelectorAll('button').forEach((b) => b.classList.remove('active'));
+              btn.classList.add('active');
+              render();
+            });
+          });
+        });
+
+        document.getElementById('nameInput').addEventListener('input', (e) => {
+          state.displayName = e.target.value || 'PIXEL.DEV';
+          render();
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>
