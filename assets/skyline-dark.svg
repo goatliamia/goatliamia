@@ -26,7 +26,7 @@
 
   <!-- Header -->
   <path d="M22 12h4v2h-4zM20 14h2v2h-2zM20 16h2v2h-2zM20 18h2v2h-2zM22 20h4v2h-4zM28 12h2v2h-2zM28 14h2v2h-2zM28 16h2v2h-2zM28 18h2v2h-2zM28 20h6v2h-6zM38 12h2v2h-2zM36 14h2v2h-2zM40 14h2v2h-2zM36 16h2v2h-2zM40 16h2v2h-2zM36 18h2v2h-2zM40 18h2v2h-2zM38 20h2v2h-2zM44 12h2v2h-2zM48 12h2v2h-2zM44 14h2v2h-2zM48 14h2v2h-2zM44 16h2v2h-2zM48 16h2v2h-2zM44 18h2v2h-2zM48 18h2v2h-2zM44 20h6v2h-6zM52 12h4v2h-4zM52 14h2v2h-2zM56 14h2v2h-2zM52 16h2v2h-2zM56 16h2v2h-2zM52 18h2v2h-2zM56 18h2v2h-2zM52 20h4v2h-4zM68 12h4v2h-4zM68 14h2v2h-2zM72 14h2v2h-2zM68 16h4v2h-4zM68 18h2v2h-2zM72 18h2v2h-2zM68 20h2v2h-2zM72 20h2v2h-2zM76 12h6v2h-6zM78 14h2v2h-2zM78 16h2v2h-2zM78 18h2v2h-2zM76 20h6v2h-6zM84 12h4v2h-4zM84 14h2v2h-2zM88 14h2v2h-2zM84 16h2v2h-2zM88 16h2v2h-2zM84 18h2v2h-2zM88 18h2v2h-2zM84 20h4v2h-4zM94 12h4v2h-4zM92 14h2v2h-2zM92 16h2v2h-2zM96 16h2v2h-2zM92 18h2v2h-2zM96 18h2v2h-2zM94 20h4v2h-4zM100 12h6v2h-6zM100 14h2v2h-2zM100 16h4v2h-4zM100 18h2v2h-2zM100 20h6v2h-6zM120 12h2v2h-2zM120 14h2v2h-2zM118 16h2v2h-2zM116 18h2v2h-2zM116 20h2v2h-2zM128 12h2v2h-2zM128 14h2v2h-2zM126 16h2v2h-2zM124 18h2v2h-2zM124 20h2v2h-2zM140 12h6v2h-6zM140 14h2v2h-2zM140 16h4v2h-4zM144 18h2v2h-2zM140 20h4v2h-4zM148 12h6v2h-6zM148 14h2v2h-2zM152 14h2v2h-2zM148 16h2v2h-2zM152 16h2v2h-2zM148 18h2v2h-2zM152 18h2v2h-2zM148 20h6v2h-6zM156 12h2v2h-2zM160 12h2v2h-2zM156 14h2v2h-2zM160 14h2v2h-2zM156 16h6v2h-6zM156 18h6v2h-6zM156 20h2v2h-2zM160 20h2v2h-2z" fill="#7d8590"/>
-  <path d="M734 12h6v2h-6zM734 14h2v2h-2zM734 16h4v2h-4zM738 18h2v2h-2zM734 20h4v2h-4zM742 12h6v2h-6zM742 14h2v2h-2zM746 14h2v2h-2zM742 16h2v2h-2zM746 16h2v2h-2zM742 18h2v2h-2zM746 18h2v2h-2zM742 20h6v2h-6zM752 12h2v2h-2zM750 14h4v2h-4zM752 16h2v2h-2zM752 18h2v2h-2zM750 20h6v2h-6zM768 12h4v2h-4zM766 14h2v2h-2zM766 16h2v2h-2zM766 18h2v2h-2zM768 20h4v2h-4zM776 12h2v2h-2zM774 14h2v2h-2zM778 14h2v2h-2zM774 16h2v2h-2zM778 16h2v2h-2zM774 18h2v2h-2zM778 18h2v2h-2zM776 20h2v2h-2zM782 12h2v2h-2zM786 12h2v2h-2zM782 14h6v2h-6zM782 16h6v2h-6zM782 18h2v2h-2zM786 18h2v2h-2zM782 20h2v2h-2zM786 20h2v2h-2zM790 12h2v2h-2zM794 12h2v2h-2zM790 14h6v2h-6zM790 16h6v2h-6zM790 18h2v2h-2zM794 18h2v2h-2zM790 20h2v2h-2zM794 20h2v2h-2zM798 12h6v2h-6zM800 14h2v2h-2zM800 16h2v2h-2zM800 18h2v2h-2zM798 20h6v2h-6zM806 12h6v2h-6zM808 14h2v2h-2zM808 16h2v2h-2zM808 18h2v2h-2zM808 20h2v2h-2zM816 12h4v2h-4zM814 14h2v2h-2zM816 16h2v2h-2zM818 18h2v2h-2zM814 20h4v2h-4z" fill="#e6edf3"/>
+  <path d="M734 12h6v2h-6zM734 14h2v2h-2zM734 16h4v2h-4zM738 18h2v2h-2zM734 20h4v2h-4zM742 12h6v2h-6zM742 14h2v2h-2zM746 14h2v2h-2zM742 16h2v2h-2zM746 16h2v2h-2zM742 18h2v2h-2zM746 18h2v2h-2zM742 20h6v2h-6zM750 12h4v2h-4zM754 14h2v2h-2zM752 16h2v2h-2zM754 18h2v2h-2zM750 20h4v2h-4zM768 12h4v2h-4zM766 14h2v2h-2zM766 16h2v2h-2zM766 18h2v2h-2zM768 20h4v2h-4zM776 12h2v2h-2zM774 14h2v2h-2zM778 14h2v2h-2zM774 16h2v2h-2zM778 16h2v2h-2zM774 18h2v2h-2zM778 18h2v2h-2zM776 20h2v2h-2zM782 12h2v2h-2zM786 12h2v2h-2zM782 14h6v2h-6zM782 16h6v2h-6zM782 18h2v2h-2zM786 18h2v2h-2zM782 20h2v2h-2zM786 20h2v2h-2zM790 12h2v2h-2zM794 12h2v2h-2zM790 14h6v2h-6zM790 16h6v2h-6zM790 18h2v2h-2zM794 18h2v2h-2zM790 20h2v2h-2zM794 20h2v2h-2zM798 12h6v2h-6zM800 14h2v2h-2zM800 16h2v2h-2zM800 18h2v2h-2zM798 20h6v2h-6zM806 12h6v2h-6zM808 14h2v2h-2zM808 16h2v2h-2zM808 18h2v2h-2zM808 20h2v2h-2zM816 12h4v2h-4zM814 14h2v2h-2zM816 16h2v2h-2zM818 18h2v2h-2zM814 20h4v2h-4z" fill="#e6edf3"/>
   <rect x="20" y="32" width="800" height="4" fill="url(#s_d_m_d25)"/>
 
   <!-- Quiet Drifting Clouds above Peaks -->
@@ -93,10 +93,10 @@
   <rect x="708" y="100" width="12" height="4" fill="#e6edf3"/>
   <rect x="724" y="104" width="12" height="4" fill="url(#s_d_m_d25)"/>
   <rect x="724" y="100" width="12" height="4" fill="#e6edf3"/>
-  <rect x="740" y="64" width="12" height="44" fill="#e6edf3"/>
+  <rect x="740" y="64" width="12" height="44" fill="url(#s_d_m_d75)"/>
   <rect x="740" y="60" width="12" height="4" fill="#e6edf3"/>
-  <rect x="756" y="80" width="12" height="28" fill="url(#s_d_m_d75)"/>
-  <rect x="756" y="76" width="12" height="4" fill="#e6edf3"/>
+  <rect x="756" y="84" width="12" height="24" fill="url(#s_d_m_d75)"/>
+  <rect x="756" y="80" width="12" height="4" fill="#e6edf3"/>
   <rect x="772" y="96" width="12" height="12" fill="url(#s_d_m_d50)"/>
   <rect x="772" y="92" width="12" height="4" fill="#e6edf3"/>
   <rect x="788" y="96" width="12" height="12" fill="url(#s_d_m_d50)"/>
