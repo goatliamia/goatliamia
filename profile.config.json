@@ -6,17 +6,40 @@
   "accent": "mono",
   "focus": "BUILDING",
   "bio": "Building agent tools, trace visualizers, and quiet minimal interfaces — somewhere above the clouds.",
-  "now": "Working on trajectory-tree — agent traces, eval metrics & evidence-linked reports.",
+  "now": "Working on trajectory-tree & contributing Code Analysis + Story choreography to archify.",
   "projects": [
     {
-      "name": "trajectory-tree",
+      "id": "trajectory",
+      "repo": "goatliamia/trajectory-tree",
       "url": "https://github.com/goatliamia/trajectory-tree",
-      "tag": "JS / AGENT EVAL",
-      "desc": "Visualize agent traces, explore Eval metrics and evidence-linked reports for DSH, Pi, Codex and Claude Code, plus an Antigravity context sidebar."
+      "role": "AUTHOR // TOOL",
+      "title": "TRAJECTORY-TREE",
+      "lines": [
+        "Agent trace visualizer, eval metrics",
+        "& evidence-linked reports."
+      ],
+      "tags": "JS // AGENT EVAL",
+      "icon": "tree",
+      "fallbackStars": 8
+    },
+    {
+      "id": "archify",
+      "repo": "tt-a1i/archify",
+      "url": "https://github.com/tt-a1i/archify",
+      "role": "CONTRIBUTOR // OSS",
+      "title": "TT-A1I/ARCHIFY",
+      "lines": [
+        "Interactive diagrams — Code Analysis,",
+        "Atlas & Story choreography."
+      ],
+      "tags": "CODE ANALYSIS // STORY",
+      "icon": "graph",
+      "fallbackStars": 98678
     }
   ],
   "links": [
     { "label": "github", "url": "https://github.com/goatliamia" },
-    { "label": "trajectory-tree", "url": "https://github.com/goatliamia/trajectory-tree" }
+    { "label": "trajectory-tree", "url": "https://github.com/goatliamia/trajectory-tree" },
+    { "label": "archify", "url": "https://github.com/tt-a1i/archify" }
   ]
 }

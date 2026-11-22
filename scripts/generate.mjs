@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildHeroSvg, buildSkylineSvg } from './svg-builder.mjs';
+import { buildHeroSvg, buildSkylineSvg, buildProjectCardSvg } from './svg-builder.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -81,7 +81,6 @@ async function fetchGitHubStats(username, token) {
     const last7 = allDays.slice(-7).reduce((s, d) => s + d.contributionCount, 0);
     const last30 = allDays.slice(-30).reduce((s, d) => s + d.contributionCount, 0);
 
-    // Current consecutive day streak (allowing today to be 0 if yesterday was active)
     let streak = 0;
     for (let i = allDays.length - 1; i >= 0; i--) {
       if (allDays[i].contributionCount > 0) {
@@ -106,8 +105,24 @@ async function fetchGitHubStats(username, token) {
   }
 }
 
-function buildPreviewBundle(stats, clock) {
-  // Strip ESM `export ` so it works seamlessly via <script> even over file://
+async function fetchRepoStars(repoFullName, token, fallback = 0) {
+  if (!repoFullName) return fallback;
+  try {
+    const headers = {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'pixel-profile-generator',
+    };
+    if (token) headers.Authorization = `Bearer ${token}`;
+    const res = await fetch(`https://api.github.com/repos/${repoFullName}`, { headers });
+    if (!res.ok) return fallback;
+    const data = await res.json();
+    return typeof data.stargazers_count === 'number' ? data.stargazers_count : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function buildPreviewBundle(stats, clock, cardStars) {
   const builderSrc = fs
     .readFileSync(path.join(__dirname, 'svg-builder.mjs'), 'utf8')
     .replace(/^export\s+/gm, '');
@@ -118,14 +133,17 @@ ${builderSrc}
   const DEFAULT_CONFIG = ${JSON.stringify(config, null, 2)};
   const DEFAULT_STATS = ${JSON.stringify(stats, null, 2)};
   const DEFAULT_CLOCK = ${JSON.stringify(clock, null, 2)};
+  const CARD_STARS = ${JSON.stringify(cardStars, null, 2)};
   return {
     ACCENTS,
     THEMES,
     buildHeroSvg,
     buildSkylineSvg,
+    buildProjectCardSvg,
     DEFAULT_CONFIG,
     DEFAULT_STATS,
     DEFAULT_CLOCK,
+    CARD_STARS,
   };
 })();
 `;
@@ -151,8 +169,10 @@ async function main() {
   const plantStage =
     stats.recentCommits30d >= 15 ? 'bloom' : stats.recentCommits30d >= 4 ? 'sprout' : 'dormant';
 
+  const accent = config.accent || 'mono';
+
   const heroBase = {
-    accent: config.accent || 'emerald',
+    accent,
     timeOfDay: clock.timeOfDay,
     activityState,
     plantStage,
@@ -169,18 +189,39 @@ async function main() {
     'hero-light.svg': buildHeroSvg({ ...heroBase, theme: 'light' }),
     'skyline-dark.svg': buildSkylineSvg({
       theme: 'dark',
-      accent: config.accent || 'emerald',
+      accent,
       weeks: stats.weeks,
       totalCommits: stats.totalCommits,
     }),
     'skyline-light.svg': buildSkylineSvg({
       theme: 'light',
-      accent: config.accent || 'emerald',
+      accent,
       weeks: stats.weeks,
       totalCommits: stats.totalCommits,
     }),
-    'preview-builder.js': buildPreviewBundle(stats, clock),
   };
+
+  // Generate 1-bit pixel project showcase cards (dark & light) with live stars
+  const cardStars = {};
+  for (const proj of config.projects || []) {
+    const stars = await fetchRepoStars(proj.repo, envToken, proj.fallbackStars ?? 0);
+    cardStars[proj.id] = stars;
+    for (const theme of ['dark', 'light']) {
+      files[`card-${proj.id}-${theme}.svg`] = buildProjectCardSvg({
+        theme,
+        accent,
+        id: proj.id,
+        role: proj.role,
+        title: proj.title,
+        lines: proj.lines,
+        tags: proj.tags,
+        stars,
+        icon: proj.icon,
+      });
+    }
+  }
+
+  files['preview-builder.js'] = buildPreviewBundle(stats, clock, cardStars);
 
   for (const [name, content] of Object.entries(files)) {
     fs.writeFileSync(path.join(assetsDir, name), content, 'utf8');
@@ -188,7 +229,7 @@ async function main() {
 
   console.log(
     `Generated profile assets (${live ? 'live GitHub API' : 'demo mode'}): ` +
-      `phase=${clock.timeOfDay}, state=${activityState}, plant=${plantStage}`
+      `phase=${clock.timeOfDay}, state=${activityState}, plant=${plantStage}, cards=${JSON.stringify(cardStars)}`
   );
 }
 

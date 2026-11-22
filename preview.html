@@ -221,6 +221,31 @@
         border-radius: 4px;
       }
 
+      .cards-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: center;
+        margin: 22px 0 28px;
+      }
+
+      .cards-row a {
+        display: block;
+        flex: 0 1 408px;
+        transition: transform 0.12s steps(2);
+      }
+
+      .cards-row a:hover {
+        transform: translateY(-2px);
+      }
+
+      .cards-row img {
+        width: 100%;
+        height: auto;
+        display: block;
+        image-rendering: pixelated;
+      }
+
       .readme-footer {
         margin-top: 24px;
         text-align: center;
@@ -306,26 +331,15 @@
 
           <pre id="nowBlock"></pre>
 
-          <h3>Selected Works</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Project</th>
-                <th>Stack</th>
-                <th>Note</th>
-              </tr>
-            </thead>
-            <tbody id="projectsBody"></tbody>
-          </table>
+          <div id="cardsRow" class="cards-row"></div>
 
           <div class="svg-stage">
-            <img id="skylineImg" alt="Pixel Contribution Ridge" />
+            <img id="skylineImg" alt="1-bit Cloud Goat Contribution Runner" />
           </div>
 
           <div class="readme-footer">
-            <div id="linksRow"></div>
             <div style="margin-top: 6px; font-size: 12px">
-              1-bit micro-ecosystem auto-updates every 4h via GitHub Actions
+              1-bit cloud ecosystem · auto-refreshes every 4h via GitHub Actions
             </div>
           </div>
         </article>
@@ -342,32 +356,22 @@
         const api = window.PIXEL_PROFILE;
         const cfg = api.DEFAULT_CONFIG;
         const stats = api.DEFAULT_STATS;
+        const cardStars = api.CARD_STARS || {};
 
         const state = {
           theme: 'dark',
           timeOfDay: 'night',
           activityState: 'active',
-          accent: cfg.accent || 'emerald',
-          displayName: cfg.displayName || 'PIXEL.DEV',
+          accent: cfg.accent || 'mono',
+          displayName: cfg.displayName || 'GOATLIAMIA',
         };
 
         document.getElementById('nameInput').value = state.displayName;
-        document.getElementById('repoHandle').textContent = cfg.username || 'pixel-dev';
+        document.getElementById('repoHandle').textContent = cfg.username || 'goatliamia';
         document.getElementById('bioText').textContent = cfg.bio || '';
         document.getElementById('nowBlock').textContent =
           `NOW      ▸ ${cfg.now}\n` +
-          `FOCUS    ▸ TypeScript · Creative Coding · Minimal UI · Developer Tools`;
-
-        document.getElementById('projectsBody').innerHTML = (cfg.projects || [])
-          .map(
-            (p) =>
-              `<tr><td><code><strong>${p.name}</strong></code></td><td><code>${p.tag}</code></td><td>${p.desc}</td></tr>`
-          )
-          .join('');
-
-        document.getElementById('linksRow').innerHTML = (cfg.links || [])
-          .map((l) => `<code><a href="${l.url}" target="_blank" rel="noreferrer">${l.label}</a></code>`)
-          .join(' · ');
+          `FOCUS    ▸ Agent Tooling · Trace Visualization · Interactive Diagrams · Minimalist UI`;
 
         function toSvgDataUri(svg) {
           return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
@@ -399,6 +403,24 @@
 
           document.getElementById('heroImg').src = toSvgDataUri(heroSvg);
           document.getElementById('skylineImg').src = toSvgDataUri(skylineSvg);
+
+          const cardsRow = document.getElementById('cardsRow');
+          cardsRow.innerHTML = (cfg.projects || [])
+            .map((p) => {
+              const svg = api.buildProjectCardSvg({
+                theme: state.theme,
+                accent: state.accent,
+                id: p.id,
+                role: p.role,
+                title: p.title,
+                lines: p.lines,
+                tags: p.tags,
+                stars: cardStars[p.id] ?? p.fallbackStars ?? 0,
+                icon: p.icon,
+              });
+              return `<a href="${p.url}" target="_blank" rel="noreferrer"><img alt="${p.title}" src="${toSvgDataUri(svg)}" /></a>`;
+            })
+            .join('');
         }
 
         document.querySelectorAll('.seg').forEach((group) => {

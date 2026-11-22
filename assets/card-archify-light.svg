@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="408" height="136" viewBox="0 0 408 136" shape-rendering="crispEdges" role="img" aria-label="TT-A1I/ARCHIFY">
+  <defs>
+    <pattern id="c_archify_l_d50" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="4" height="4" fill="#d0d7de"/>
+      <rect x="4" y="4" width="4" height="4" fill="#d0d7de"/>
+    </pattern>
+  </defs>
+
+  <style>
+    .card-dot { animation: cardPulse 2.8s steps(1) infinite; }
+    @keyframes cardPulse { 0%, 72% { opacity: 1; } 73%, 100% { opacity: 0.25; } }
+    .desc {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11.5px;
+      fill: #656d76;
+    }
+  </style>
+
+  <!-- 1-bit Dither Drop Shadow -->
+  <rect x="6" y="6" width="402" height="130" fill="url(#c_archify_l_d50)"/>
+
+  <!-- Card Body (cut pixel corners) -->
+  <rect x="2" y="2" width="398" height="126" fill="#f6f8fa"/>
+  <rect x="4" y="0" width="394" height="2" fill="#1f2328"/>
+  <rect x="4" y="128" width="394" height="2" fill="#1f2328"/>
+  <rect x="2" y="2" width="2" height="126" fill="#1f2328"/>
+  <rect x="398" y="2" width="2" height="126" fill="#1f2328"/>
+
+  <!-- Header Row: Role + Live Stars -->
+  <rect class="card-dot" x="18" y="18" width="4" height="4" fill="#1f2328"/>
+  <path d="M30 16h4v2h-4zM28 18h2v2h-2zM28 20h2v2h-2zM28 22h2v2h-2zM30 24h4v2h-4zM38 16h2v2h-2zM36 18h2v2h-2zM40 18h2v2h-2zM36 20h2v2h-2zM40 20h2v2h-2zM36 22h2v2h-2zM40 22h2v2h-2zM38 24h2v2h-2zM44 16h4v2h-4zM44 18h2v2h-2zM48 18h2v2h-2zM44 20h2v2h-2zM48 20h2v2h-2zM44 22h2v2h-2zM48 22h2v2h-2zM44 24h2v2h-2zM48 24h2v2h-2zM52 16h6v2h-6zM54 18h2v2h-2zM54 20h2v2h-2zM54 22h2v2h-2zM54 24h2v2h-2zM60 16h4v2h-4zM60 18h2v2h-2zM64 18h2v2h-2zM60 20h4v2h-4zM60 22h2v2h-2zM64 22h2v2h-2zM60 24h2v2h-2zM64 24h2v2h-2zM68 16h6v2h-6zM70 18h2v2h-2zM70 20h2v2h-2zM70 22h2v2h-2zM68 24h6v2h-6zM76 16h4v2h-4zM76 18h2v2h-2zM80 18h2v2h-2zM76 20h4v2h-4zM76 22h2v2h-2zM80 22h2v2h-2zM76 24h4v2h-4zM84 16h2v2h-2zM88 16h2v2h-2zM84 18h2v2h-2zM88 18h2v2h-2zM84 20h2v2h-2zM88 20h2v2h-2zM84 22h2v2h-2zM88 22h2v2h-2zM84 24h6v2h-6zM92 16h6v2h-6zM94 18h2v2h-2zM94 20h2v2h-2zM94 22h2v2h-2zM94 24h2v2h-2zM102 16h2v2h-2zM100 18h2v2h-2zM104 18h2v2h-2zM100 20h2v2h-2zM104 20h2v2h-2zM100 22h2v2h-2zM104 22h2v2h-2zM102 24h2v2h-2zM108 16h4v2h-4zM108 18h2v2h-2zM112 18h2v2h-2zM108 20h4v2h-4zM108 22h2v2h-2zM112 22h2v2h-2zM108 24h2v2h-2zM112 24h2v2h-2zM128 16h2v2h-2zM128 18h2v2h-2zM126 20h2v2h-2zM124 22h2v2h-2zM124 24h2v2h-2zM136 16h2v2h-2zM136 18h2v2h-2zM134 20h2v2h-2zM132 22h2v2h-2zM132 24h2v2h-2zM150 16h2v2h-2zM148 18h2v2h-2zM152 18h2v2h-2zM148 20h2v2h-2zM152 20h2v2h-2zM148 22h2v2h-2zM152 22h2v2h-2zM150 24h2v2h-2zM158 16h4v2h-4zM156 18h2v2h-2zM158 20h2v2h-2zM160 22h2v2h-2zM156 24h4v2h-4zM166 16h4v2h-4zM164 18h2v2h-2zM166 20h2v2h-2zM168 22h2v2h-2zM164 24h4v2h-4z" fill="#656d76"/>
+  <path d="M334 16h2v2h-2zM332 18h6v2h-6zM330 20h10v2h-10zM332 22h6v2h-6zM332 24h2v2h-2zM336 24h2v2h-2z" fill="#1f2328"/>
+  <path d="M346 16h6v2h-6zM346 18h2v2h-2zM350 18h2v2h-2zM346 20h6v2h-6zM350 22h2v2h-2zM346 24h4v2h-4zM354 16h6v2h-6zM354 18h2v2h-2zM358 18h2v2h-2zM354 20h6v2h-6zM354 22h2v2h-2zM358 22h2v2h-2zM354 24h6v2h-6zM364 24h2v2h-2zM370 16h6v2h-6zM374 18h2v2h-2zM372 20h2v2h-2zM372 22h2v2h-2zM372 24h2v2h-2zM378 16h2v2h-2zM382 16h2v2h-2zM378 18h2v2h-2zM382 18h2v2h-2zM378 20h4v2h-4zM378 22h2v2h-2zM382 22h2v2h-2zM378 24h2v2h-2zM382 24h2v2h-2z" fill="#1f2328"/>
+
+  <!-- Dithered Hairline -->
+  <rect x="18" y="32" width="366" height="2" fill="url(#c_archify_l_d50)"/>
+
+  <!-- Pixel Title -->
+  <path d="M18 44h10v2h-10zM22 46h2v2h-2zM22 48h2v2h-2zM22 50h2v2h-2zM22 52h2v2h-2zM22 54h2v2h-2zM22 56h2v2h-2zM30 44h10v2h-10zM34 46h2v2h-2zM34 48h2v2h-2zM34 50h2v2h-2zM34 52h2v2h-2zM34 54h2v2h-2zM34 56h2v2h-2zM42 50h10v2h-10zM56 44h6v2h-6zM54 46h2v2h-2zM62 46h2v2h-2zM54 48h2v2h-2zM62 48h2v2h-2zM54 50h10v2h-10zM54 52h2v2h-2zM62 52h2v2h-2zM54 54h2v2h-2zM62 54h2v2h-2zM54 56h2v2h-2zM62 56h2v2h-2zM70 44h2v2h-2zM68 46h4v2h-4zM70 48h2v2h-2zM70 50h2v2h-2zM70 52h2v2h-2zM70 54h2v2h-2zM68 56h6v2h-6zM80 44h6v2h-6zM82 46h2v2h-2zM82 48h2v2h-2zM82 50h2v2h-2zM82 52h2v2h-2zM82 54h2v2h-2zM80 56h6v2h-6zM98 44h2v2h-2zM96 46h2v2h-2zM96 48h2v2h-2zM94 50h2v2h-2zM92 52h2v2h-2zM92 54h2v2h-2zM90 56h2v2h-2zM104 44h6v2h-6zM102 46h2v2h-2zM110 46h2v2h-2zM102 48h2v2h-2zM110 48h2v2h-2zM102 50h10v2h-10zM102 52h2v2h-2zM110 52h2v2h-2zM102 54h2v2h-2zM110 54h2v2h-2zM102 56h2v2h-2zM110 56h2v2h-2zM114 44h8v2h-8zM114 46h2v2h-2zM122 46h2v2h-2zM114 48h2v2h-2zM122 48h2v2h-2zM114 50h8v2h-8zM114 52h2v2h-2zM118 52h2v2h-2zM114 54h2v2h-2zM120 54h2v2h-2zM114 56h2v2h-2zM122 56h2v2h-2zM128 44h6v2h-6zM126 46h2v2h-2zM134 46h2v2h-2zM126 48h2v2h-2zM126 50h2v2h-2zM126 52h2v2h-2zM126 54h2v2h-2zM134 54h2v2h-2zM128 56h6v2h-6zM138 44h2v2h-2zM146 44h2v2h-2zM138 46h2v2h-2zM146 46h2v2h-2zM138 48h2v2h-2zM146 48h2v2h-2zM138 50h10v2h-10zM138 52h2v2h-2zM146 52h2v2h-2zM138 54h2v2h-2zM146 54h2v2h-2zM138 56h2v2h-2zM146 56h2v2h-2zM152 44h6v2h-6zM154 46h2v2h-2zM154 48h2v2h-2zM154 50h2v2h-2zM154 52h2v2h-2zM154 54h2v2h-2zM152 56h6v2h-6zM162 44h10v2h-10zM162 46h2v2h-2zM162 48h2v2h-2zM162 50h8v2h-8zM162 52h2v2h-2zM162 54h2v2h-2zM162 56h2v2h-2zM174 44h2v2h-2zM182 44h2v2h-2zM174 46h2v2h-2zM182 46h2v2h-2zM176 48h2v2h-2zM180 48h2v2h-2zM178 50h2v2h-2zM178 52h2v2h-2zM178 54h2v2h-2zM178 56h2v2h-2z" fill="#1f2328"/>
+
+  <!-- Clean Monospace Description -->
+  <text x="18" y="77" class="desc" shape-rendering="auto">Interactive diagrams — Code Analysis,</text>
+  <text x="18" y="94" class="desc" shape-rendering="auto">Atlas &amp; Story choreography.</text>
+
+  <!-- Footer Tags + Mini Pixel Glyph -->
+  <path d="M20 108h4v2h-4zM18 110h2v2h-2zM18 112h2v2h-2zM18 114h2v2h-2zM20 116h4v2h-4zM28 108h2v2h-2zM26 110h2v2h-2zM30 110h2v2h-2zM26 112h2v2h-2zM30 112h2v2h-2zM26 114h2v2h-2zM30 114h2v2h-2zM28 116h2v2h-2zM34 108h4v2h-4zM34 110h2v2h-2zM38 110h2v2h-2zM34 112h2v2h-2zM38 112h2v2h-2zM34 114h2v2h-2zM38 114h2v2h-2zM34 116h4v2h-4zM42 108h6v2h-6zM42 110h2v2h-2zM42 112h4v2h-4zM42 114h2v2h-2zM42 116h6v2h-6zM60 108h2v2h-2zM58 110h2v2h-2zM62 110h2v2h-2zM58 112h6v2h-6zM58 114h2v2h-2zM62 114h2v2h-2zM58 116h2v2h-2zM62 116h2v2h-2zM66 108h4v2h-4zM66 110h2v2h-2zM70 110h2v2h-2zM66 112h2v2h-2zM70 112h2v2h-2zM66 114h2v2h-2zM70 114h2v2h-2zM66 116h2v2h-2zM70 116h2v2h-2zM76 108h2v2h-2zM74 110h2v2h-2zM78 110h2v2h-2zM74 112h6v2h-6zM74 114h2v2h-2zM78 114h2v2h-2zM74 116h2v2h-2zM78 116h2v2h-2zM82 108h2v2h-2zM82 110h2v2h-2zM82 112h2v2h-2zM82 114h2v2h-2zM82 116h6v2h-6zM90 108h2v2h-2zM94 108h2v2h-2zM90 110h2v2h-2zM94 110h2v2h-2zM92 112h2v2h-2zM92 114h2v2h-2zM92 116h2v2h-2zM100 108h4v2h-4zM98 110h2v2h-2zM100 112h2v2h-2zM102 114h2v2h-2zM98 116h4v2h-4zM106 108h6v2h-6zM108 110h2v2h-2zM108 112h2v2h-2zM108 114h2v2h-2zM106 116h6v2h-6zM116 108h4v2h-4zM114 110h2v2h-2zM116 112h2v2h-2zM118 114h2v2h-2zM114 116h4v2h-4zM134 108h2v2h-2zM134 110h2v2h-2zM132 112h2v2h-2zM130 114h2v2h-2zM130 116h2v2h-2zM142 108h2v2h-2zM142 110h2v2h-2zM140 112h2v2h-2zM138 114h2v2h-2zM138 116h2v2h-2zM156 108h4v2h-4zM154 110h2v2h-2zM156 112h2v2h-2zM158 114h2v2h-2zM154 116h4v2h-4zM162 108h6v2h-6zM164 110h2v2h-2zM164 112h2v2h-2zM164 114h2v2h-2zM164 116h2v2h-2zM172 108h2v2h-2zM170 110h2v2h-2zM174 110h2v2h-2zM170 112h2v2h-2zM174 112h2v2h-2zM170 114h2v2h-2zM174 114h2v2h-2zM172 116h2v2h-2zM178 108h4v2h-4zM178 110h2v2h-2zM182 110h2v2h-2zM178 112h4v2h-4zM178 114h2v2h-2zM182 114h2v2h-2zM178 116h2v2h-2zM182 116h2v2h-2zM186 108h2v2h-2zM190 108h2v2h-2zM186 110h2v2h-2zM190 110h2v2h-2zM188 112h2v2h-2zM188 114h2v2h-2zM188 116h2v2h-2z" fill="#656d76"/>
+  <path d="M364 100h6v2h-6zM364 102h2v2h-2zM368 102h2v2h-2zM374 102h6v2h-6zM364 104h6v2h-6zM374 104h2v2h-2zM378 104h2v2h-2zM366 106h2v2h-2zM374 106h6v2h-6zM366 108h10v2h-10zM374 110h6v2h-6zM374 112h2v2h-2zM378 112h2v2h-2zM374 114h6v2h-6z" fill="#656d76"/>
+</svg>

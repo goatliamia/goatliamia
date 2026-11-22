@@ -900,108 +900,209 @@ export function buildHeroSvg({
 </svg>`;
 }
 
-// ---------- PIXEL CONTRIBUTION RIDGE / SKYLINE SVG (840 x 136, virtual 210 x 34 @ 4px) ----------
+// ---------- 1-BIT CLOUD-GOAT RUNNER (CHROME DINO STYLE CONTRIBUTION TRACK, 840 x 168) ----------
 
 export function buildSkylineSvg({
   theme = 'dark',
-  accent = 'emerald',
+  accent = 'mono',
   weeks = [],
   totalCommits = 482,
 } = {}) {
   const S = 4;
   const W = 210 * S; // 840
-  const H = 34 * S; // 136
+  const H = 42 * S; // 168
   const t = THEMES[theme] || THEMES.dark;
-  const acc = (ACCENTS[accent] || ACCENTS.emerald)[theme === 'light' ? 'light' : 'dark'];
-  const uid = `s_${theme[0]}_${accent[0]}`;
+  const acc = (ACCENTS[accent] || ACCENTS.mono)[theme === 'light' ? 'light' : 'dark'];
+  const uid = `r_${theme[0]}_${accent[0]}`;
 
-  // Normalize to 50 columns across x: 5..205 (4 vpx per column)
+  // Normalize 50 weeks of real GitHub contribution data across x: 5..205
   const cols = 50;
   const data =
     weeks.length >= cols
       ? weeks.slice(-cols)
       : Array.from({ length: cols }, (_, i) => weeks[i] ?? 0);
   const maxVal = Math.max(1, ...data);
-  const baseY = 27; // baseline in vpx
-  const maxH = 16; // max peak height in vpx
+  const groundY = 34; // crisp Dino horizon line in vpx
+  const bgMaxH = 13;
 
-  const headerLeft = renderPixelText('CLOUD RIDGE // 50W', 5 * S, 3 * S, 2, t.inkMuted, '3x5', 1);
-  const rightStr = `${totalCommits} COMMITS`;
-  const rightW = measurePixelText(rightStr, 2, '3x5', 1);
-  const headerRight = renderPixelText(rightStr, 205 * S - rightW, 3 * S, 2, t.ink, '3x5', 1);
+  // Classic Chrome Dino HUD: left label + right HI 00000 score
+  const headerLeft = renderPixelText('GOAT RUNNER // 50W', 5 * S, 2 * S, 2, t.inkMuted, '3x5', 1);
+  const scoreStr = `HI ${String(totalCommits).padStart(5, '0')}`;
+  const scoreW = measurePixelText(scoreStr, 2, '3x5', 1);
+  const headerRight = renderPixelText(scoreStr, 205 * S - scoreW, 2 * S, 2, t.ink, '3x5', 1);
 
-  // Subtle floating 1-bit pixel clouds drifting quietly above the ridge
-  const ridgeClouds = `
-    <g class="ridge-cloud-a" opacity="0.55">
-      ${renderSprite(
-        [
-          '..####...',
-          '.######..',
-          '########.',
-        ],
-        24,
-        10,
-        S,
-        { '#': t.inkFaint }
-      )}
-    </g>
-    <g class="ridge-cloud-b" opacity="0.45">
-      ${renderSprite(
-        [
-          '..###..',
-          '.#####.',
-        ],
-        142,
-        11,
-        S,
-        { '#': t.inkFaint }
-      )}
-    </g>
-  `;
-
-  const columnsSvg = [];
-  const beaconsSvg = [];
-
+  // Layer 1 (Background): Subtle 1-bit dither silhouette of all 50 real contribution weeks
+  const bgRidgeSvg = [];
   for (let i = 0; i < cols; i++) {
     const val = data[i];
+    if (val <= 0) continue;
     const ratio = val / maxVal;
-    const h = val === 0 ? 0 : Math.max(2, Math.round(ratio * maxH));
+    const h = Math.max(2, Math.round(ratio * bgMaxH));
     const x = 5 + i * 4;
-    const topY = baseY - h;
-
-    if (h === 0) {
-      // Flat quiet dotted horizon
-      columnsSvg.push(pxRect(x + 1, baseY - 1, 2, 1, S, t.inkFaint));
-    } else {
-      // Determine 1-bit dither density by activity quartile
-      let fill = `url(#${uid}_d25)`;
-      if (ratio >= 0.75) fill = t.ink;
-      else if (ratio >= 0.45) fill = `url(#${uid}_d75)`;
-      else if (ratio >= 0.2) fill = `url(#${uid}_d50)`;
-
-      // Column body (3 vpx wide + 1 vpx crisp breathing gap)
-      columnsSvg.push(pxRect(x, topY + 1, 3, Math.max(1, h - 1), S, fill));
-      // Crisp 1-pixel peak cap
-      columnsSvg.push(pxRect(x, topY, 3, 1, S, ratio >= 0.75 ? acc : t.ink));
-
-      // Peak twinkle light on tallest weeks
-      if (ratio >= 0.78) {
-        const cls = i % 3 === 0 ? 'beacon-a' : i % 3 === 1 ? 'beacon-b' : 'beacon-c';
-        beaconsSvg.push(`<g class="${cls}">${pxRect(x + 1, topY - 2, 1, 1, S, acc)}</g>`);
-      }
-    }
+    const topY = groundY - h;
+    const fill = ratio >= 0.65 ? `url(#${uid}_d50)` : `url(#${uid}_d25)`;
+    bgRidgeSvg.push(pxRect(x, topY, 3, h, S, fill));
   }
 
-  // Minimal axis labels
+  // Seamless repeating parallax clouds (tile width = 200 vpx = 800px)
+  const buildCloudTile = (offsetX) => `
+    ${renderSprite(
+      [
+        '...#####....',
+        '.#########..',
+        '###########.',
+      ],
+      offsetX + 38,
+      11,
+      S,
+      { '#': t.inkFaint }
+    )}
+    ${renderSprite(
+      [
+        '..####...',
+        '.######..',
+        '########.',
+      ],
+      offsetX + 126,
+      13,
+      S,
+      { '#': t.inkFaint }
+    )}
+    ${renderSprite(
+      [
+        '..###..',
+        '.#####.',
+      ],
+      offsetX + 178,
+      10,
+      S,
+      { '#': t.inkFaint }
+    )}
+  `;
+
+  // Seamless repeating Chrome-Dino scrolling ground pebbles + 3 pixel obstacles (tile width = 200 vpx)
+  // Goat center is at x = 33 vpx; obstacles at x = 83 (25%), x = 143 (55%), x = 197 (82%)
+  const buildTrackTile = (offsetX) => {
+    // Ground dust speckles & dashes
+    const speckles = [
+      [12, 35, 3], [27, 36, 2], [44, 35, 4], [63, 36, 2],
+      [77, 35, 2], [96, 36, 5], [115, 35, 3], [131, 36, 2],
+      [154, 35, 4], [171, 36, 3], [188, 35, 2], [202, 36, 2],
+    ]
+      .map(([sx, sy, sw]) => pxRect(offsetX + sx, sy, sw, 1, S, t.inkMuted))
+      .join('');
+
+    // Obstacle 1 (x = 80..86, center 83, height 8): Classic pixel cactus
+    const cactusTall = renderSprite(
+      [
+        '...#...',
+        '#..#...',
+        '#..#..#',
+        '#..#..#',
+        '####..#',
+        '...####',
+        '...#...',
+        '...#...',
+      ],
+      offsetX + 80,
+      groundY - 8,
+      S,
+      { '#': t.ink }
+    );
+
+    // Obstacle 2 (x = 138..148, center 143, height 6): Double commit cactus cluster
+    const cactusDouble = renderSprite(
+      [
+        '..#.....#..',
+        '#.#...#.#..',
+        '###.#.#.#.#',
+        '..###.###.#',
+        '..#.....###',
+        '..#.....#..',
+      ],
+      offsetX + 138,
+      groundY - 6,
+      S,
+      { '#': t.ink }
+    );
+
+    // Obstacle 3 (x = 193..200, center 197, height 7): Sharp pixel commit spire
+    const spire = renderSprite(
+      [
+        '...a...',
+        '...#...',
+        '..###..',
+        '..###.#',
+        '.#####.',
+        '#######',
+        '#######',
+      ],
+      offsetX + 193,
+      groundY - 7,
+      S,
+      { '#': t.ink, a: acc }
+    );
+
+    return `${speckles}${cactusTall}${cactusDouble}${spire}`;
+  };
+
+  // Right-facing Galloping 1-bit Pixel Mountain Goat (x: 24..43, y: 20..34)
+  const goatTorso = renderSprite(
+    [
+      '.........##.##......',
+      '...........#..#.....',
+      '..........#####.....',
+      '.........##########.',
+      '.........######o####',
+      '............########',
+      '..........#####..##.',
+      '.#..##########...#..',
+      '..############......',
+      '...###########......',
+      '...##########.......',
+    ],
+    24,
+    20,
+    S,
+    { '#': t.ink, o: t.surface }
+  );
+
+  // Gallop Frame A (legs stretched wide)
+  const legsA = renderSprite(
+    [
+      '..##........##......',
+      '.#...........##.....',
+      '#.............#.....',
+    ],
+    24,
+    31,
+    S,
+    { '#': t.ink }
+  );
+
+  // Gallop Frame B (legs tucked together)
+  const legsB = renderSprite(
+    [
+      '....##....##........',
+      '.....#....#.........',
+      '.....#...#..........',
+    ],
+    24,
+    31,
+    S,
+    { '#': t.ink }
+  );
+
+  // Minimal axis labels below ground
   const labels = [
     { text: '50W AGO', x: 5 * S },
     { text: '25W AGO', x: 96 * S },
     { text: 'NOW', x: 205 * S - measurePixelText('NOW', 2, '3x5', 1) },
   ]
-    .map((l) => renderPixelText(l.text, l.x, 30 * S, 2, t.inkMuted, '3x5', 1).svg)
+    .map((l) => renderPixelText(l.text, l.x, 38 * S, 2, t.inkMuted, '3x5', 1).svg)
     .join('\n');
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" shape-rendering="crispEdges" role="img" aria-label="Pixel Contribution Ridge">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" shape-rendering="crispEdges" role="img" aria-label="1-bit Cloud Goat Contribution Runner">
   <defs>
     <pattern id="${uid}_d25" width="8" height="8" patternUnits="userSpaceOnUse">
       <rect x="0" y="0" width="4" height="4" fill="${t.inkFaint}"/>
@@ -1010,39 +1111,241 @@ export function buildSkylineSvg({
       <rect x="0" y="0" width="4" height="4" fill="${t.inkMuted}"/>
       <rect x="4" y="4" width="4" height="4" fill="${t.inkMuted}"/>
     </pattern>
-    <pattern id="${uid}_d75" width="8" height="8" patternUnits="userSpaceOnUse">
-      <rect width="8" height="8" fill="${t.ink}"/>
-      <rect x="4" y="4" width="4" height="4" fill="${t.surface}"/>
+    <clipPath id="${uid}_track_clip">
+      <rect x="${5 * S}" y="${8 * S}" width="${200 * S}" height="${29 * S}"/>
+    </clipPath>
+  </defs>
+
+  <style>
+    .track-scroll { animation: scrollTrack 8s steps(200) infinite; }
+    .cloud-scroll { animation: scrollTrack 24s steps(100) infinite; }
+    .goat-jump { animation: goatJump 8s steps(1) infinite; }
+    .run-a { animation: runA 0.24s steps(1) infinite; }
+    .run-b { animation: runB 0.24s steps(1) infinite; }
+
+    @keyframes scrollTrack {
+      0% { transform: translateX(0px); }
+      100% { transform: translateX(-800px); }
+    }
+    @keyframes runA { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes runB { 0%, 49% { opacity: 0; } 50%, 100% { opacity: 1; } }
+
+    /* Synchronized parabolic pixel jumps peaking at 25%, 55%, and 82% */
+    @keyframes goatJump {
+      0%, 17% { transform: translateY(0px); }
+      19% { transform: translateY(-16px); }
+      21% { transform: translateY(-32px); }
+      23% { transform: translateY(-44px); }
+      25% { transform: translateY(-48px); }
+      27% { transform: translateY(-44px); }
+      29% { transform: translateY(-32px); }
+      31% { transform: translateY(-16px); }
+      33%, 47% { transform: translateY(0px); }
+
+      49% { transform: translateY(-16px); }
+      51% { transform: translateY(-32px); }
+      53% { transform: translateY(-44px); }
+      55% { transform: translateY(-48px); }
+      57% { transform: translateY(-44px); }
+      59% { transform: translateY(-32px); }
+      61% { transform: translateY(-16px); }
+      63%, 74% { transform: translateY(0px); }
+
+      76% { transform: translateY(-16px); }
+      78% { transform: translateY(-32px); }
+      80% { transform: translateY(-44px); }
+      82% { transform: translateY(-48px); }
+      84% { transform: translateY(-44px); }
+      86% { transform: translateY(-32px); }
+      88% { transform: translateY(-16px); }
+      90%, 100% { transform: translateY(0px); }
+    }
+  </style>
+
+  <!-- Chrome-Dino HUD Bar -->
+  ${headerLeft.svg}
+  ${headerRight.svg}
+  ${pxRect(5, 7, 200, 1, S, `url(#${uid}_d25)`)}
+
+  <!-- Clipped Infinite Runner Stage -->
+  <g clip-path="url(#${uid}_track_clip)">
+    <!-- Subtle 50-Week Real Contribution Ridge Silhouette in Background -->
+    <g opacity="0.34">
+      ${bgRidgeSvg.join('\n      ')}
+    </g>
+
+    <!-- Parallax High-Altitude Pixel Clouds -->
+    <g class="cloud-scroll" opacity="0.65">
+      ${buildCloudTile(0)}
+      ${buildCloudTile(200)}
+    </g>
+
+    <!-- Scrolling Obstacles & Ground Dust -->
+    <g class="track-scroll">
+      ${buildTrackTile(0)}
+      ${buildTrackTile(200)}
+    </g>
+
+    <!-- Crisp Chrome-Dino Ground Horizon -->
+    ${pxRect(5, groundY, 200, 1, S, t.ink)}
+
+    <!-- Galloping & Jumping 1-bit Pixel Mountain Goat -->
+    <g class="goat-jump">
+      ${goatTorso}
+      <g class="run-a">${legsA}</g>
+      <g class="run-b">${legsB}</g>
+    </g>
+  </g>
+
+  <!-- Subtle Timeline Ticks -->
+  ${labels}
+</svg>`;
+}
+
+// ---------- 1-BIT PIXEL PROJECT SHOWCASE CARD SVG (408 x 136) ----------
+
+function escapeXml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+export function formatStars(n) {
+  if (typeof n !== 'number' || Number.isNaN(n)) return '0';
+  if (n >= 1000) return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}K`;
+  return String(n);
+}
+
+export function buildProjectCardSvg({
+  theme = 'dark',
+  accent = 'mono',
+  id = 'card',
+  role = 'AUTHOR // TOOL',
+  title = 'PROJECT',
+  lines = ['', ''],
+  tags = 'JS',
+  stars = 0,
+  icon = 'tree', // 'tree' | 'graph'
+} = {}) {
+  const W = 408;
+  const H = 136;
+  const t = THEMES[theme] || THEMES.dark;
+  const acc = (ACCENTS[accent] || ACCENTS.mono)[theme === 'light' ? 'light' : 'dark'];
+  const uid = `c_${id}_${theme[0]}`;
+
+  const roleRendered = renderPixelText(role, 28, 16, 2, t.inkMuted, '3x5', 1);
+  const starStr = formatStars(stars);
+  const starTextW = measurePixelText(starStr, 2, '3x5', 1);
+  const starTextX = 384 - starTextW;
+  const starRendered = renderPixelText(starStr, starTextX, 16, 2, t.ink, '3x5', 1);
+
+  // Tiny 5x5 pixel star icon to the left of the star count
+  const starIconX = Math.floor((starTextX - 16) / 2);
+  const starGlyph = renderSprite(
+    [
+      '..#..',
+      '.###.',
+      '#####',
+      '.###.',
+      '.#.#.',
+    ],
+    starIconX,
+    8,
+    2,
+    { '#': acc }
+  );
+
+  // Crisp 5x7 pixel title (scale 2 -> 14px tall)
+  const titleRendered = renderPixelText(title, 18, 44, 2, t.ink, '5x7', 1);
+  const tagsRendered = renderPixelText(tags, 18, 108, 2, t.inkMuted, '3x5', 1);
+
+  // Subtle bottom-right 1-bit pixel icon (tree for trajectory-tree, node graph for archify)
+  const miniIcon =
+    icon === 'graph'
+      ? renderSprite(
+          [
+            '.###.......',
+            '.#.#..###..',
+            '.###..#.#..',
+            '..#...###..',
+            '..#####....',
+            '......###..',
+            '......#.#..',
+            '......###..',
+          ],
+          181,
+          50,
+          2,
+          { '#': t.inkMuted }
+        )
+      : renderSprite(
+          [
+            '....###....',
+            '....#.#....',
+            '....###....',
+            '.....#.....',
+            '.#########.',
+            '.#...#...#.',
+            '###.###.###',
+            '###.###.###',
+          ],
+          181,
+          50,
+          2,
+          { '#': t.inkMuted }
+        );
+
+  const line1 = escapeXml(lines[0] || '');
+  const line2 = escapeXml(lines[1] || '');
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" shape-rendering="crispEdges" role="img" aria-label="${escapeXml(title)}">
+  <defs>
+    <pattern id="${uid}_d50" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="4" height="4" fill="${t.inkFaint}"/>
+      <rect x="4" y="4" width="4" height="4" fill="${t.inkFaint}"/>
     </pattern>
   </defs>
 
   <style>
-    .beacon-a { animation: beacon 2.4s steps(1) infinite; }
-    .beacon-b { animation: beacon 3.1s steps(1) 0.8s infinite; }
-    .beacon-c { animation: beacon 2.8s steps(1) 1.5s infinite; }
-    .ridge-cloud-a { animation: ridgeCloudA 24s steps(24) infinite; }
-    .ridge-cloud-b { animation: ridgeCloudB 18s steps(18) infinite; }
-    @keyframes beacon { 0%, 58% { opacity: 1; } 59%, 100% { opacity: 0.15; } }
-    @keyframes ridgeCloudA { 0%, 100% { transform: translateX(0px); } 50% { transform: translateX(48px); } }
-    @keyframes ridgeCloudB { 0%, 100% { transform: translateX(0px); } 50% { transform: translateX(-40px); } }
+    .card-dot { animation: cardPulse 2.8s steps(1) infinite; }
+    @keyframes cardPulse { 0%, 72% { opacity: 1; } 73%, 100% { opacity: 0.25; } }
+    .desc {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11.5px;
+      fill: ${t.inkMuted};
+    }
   </style>
 
-  <!-- Header -->
-  ${headerLeft.svg}
-  ${headerRight.svg}
-  ${pxRect(5, 8, 200, 1, S, `url(#${uid}_d25)`)}
+  <!-- 1-bit Dither Drop Shadow -->
+  <rect x="6" y="6" width="402" height="130" fill="url(#${uid}_d50)"/>
 
-  <!-- Quiet Drifting Clouds above Peaks -->
-  ${ridgeClouds}
+  <!-- Card Body (cut pixel corners) -->
+  <rect x="2" y="2" width="398" height="126" fill="${t.panelBg}"/>
+  <rect x="4" y="0" width="394" height="2" fill="${t.ink}"/>
+  <rect x="4" y="128" width="394" height="2" fill="${t.ink}"/>
+  <rect x="2" y="2" width="2" height="126" fill="${t.ink}"/>
+  <rect x="398" y="2" width="2" height="126" fill="${t.ink}"/>
 
-  <!-- Skyline / Mountain Columns -->
-  ${columnsSvg.join('\n  ')}
-  ${beaconsSvg.join('\n  ')}
+  <!-- Header Row: Role + Live Stars -->
+  <rect class="card-dot" x="18" y="18" width="4" height="4" fill="${acc}"/>
+  ${roleRendered.svg}
+  ${starGlyph}
+  ${starRendered.svg}
 
-  <!-- Crisp Baseline -->
-  ${pxRect(5, baseY, 200, 1, S, t.inkFaint)}
+  <!-- Dithered Hairline -->
+  <rect x="18" y="32" width="366" height="2" fill="url(#${uid}_d50)"/>
 
-  <!-- Axis Ticks -->
-  ${labels}
+  <!-- Pixel Title -->
+  ${titleRendered.svg}
+
+  <!-- Clean Monospace Description -->
+  <text x="18" y="77" class="desc" shape-rendering="auto">${line1}</text>
+  <text x="18" y="94" class="desc" shape-rendering="auto">${line2}</text>
+
+  <!-- Footer Tags + Mini Pixel Glyph -->
+  ${tagsRendered.svg}
+  ${miniIcon}
 </svg>`;
 }
