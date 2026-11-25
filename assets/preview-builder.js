@@ -1460,17 +1460,17 @@ function buildProjectCardSvg({
     7
   ],
   "totalCommits": 549,
-  "recentCommits30d": 220,
-  "recentCommits7d": 33,
-  "streakDays": 10
+  "recentCommits30d": 209,
+  "recentCommits7d": 20,
+  "streakDays": 0
 };
   const DEFAULT_CLOCK = {
-  "timeOfDay": "night",
-  "localTimeStr": "22:23"
+  "timeOfDay": "day",
+  "localTimeStr": "08:13"
 };
   const CARD_STARS = {
   "trajectory": 9,
-  "archify": 99404
+  "archify": 99518
 };
   return {
     ACCENTS,
