@@ -1465,12 +1465,12 @@ function buildProjectCardSvg({
   "streakDays": 0
 };
   const DEFAULT_CLOCK = {
-  "timeOfDay": "night",
-  "localTimeStr": "21:42"
+  "timeOfDay": "day",
+  "localTimeStr": "07:51"
 };
   const CARD_STARS = {
   "trajectory": 9,
-  "archify": 99786
+  "archify": 99908
 };
   return {
     ACCENTS,
